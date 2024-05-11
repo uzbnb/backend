@@ -32,6 +32,12 @@ CHANNEL_LAYERS = {
     }
 }
 
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,  # Use session authentication
+    'PERSIST_AUTH': True,       # Persist authentication
+    'REFETCH_SCHEMA_WITH_AUTH': True,  # Refresh schema with authentication
+}
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
@@ -92,6 +98,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 
     'corsheaders',
+    'drf_yasg',
 
     'useraccount',
     'property',
@@ -181,6 +188,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

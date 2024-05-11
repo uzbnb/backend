@@ -8,6 +8,7 @@ from .models import Property, Reservation
 from useraccount.models import User
 from .serializers import PropertiesListSerializer, PropertiesDetailSerializer, ReservationListSerializer
 
+
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
@@ -107,7 +108,8 @@ def property_detail(request, pk):
             'errors': 'Property not found'
         }, status=404)
 
-@api_view(['POST', 'FILES'])
+
+@api_view(['POST'])
 def create_property(request):
     form = PropertyForm(request.POST, request.FILES)
 
@@ -123,7 +125,7 @@ def create_property(request):
         return JsonResponse({
             'errors': form.errors.as_json()
         }, status=400)
-    
+
 @api_view(['POST'])
 def book_property(request, pk):
     try:
